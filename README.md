@@ -39,8 +39,11 @@ If you wish to use any other version than 1.7.22 of the *sentry.jar*, then you c
 <resource-root path="sentry-1.7.22.jar" />
 ```
 with
-```<resource-root path="sentry-<your version number>.jar" />
+```
+<resource-root path="sentry-<your version number>.jar" />
 ```
 in *module.xml*.
+
 Make sure you also save the new *sentry-<your version number>.jar* in the same location as the *module.xml* file!
 
+You can find the latest *sentry.jar* here: https://search.maven.org/artifact/io.sentry/sentry/
