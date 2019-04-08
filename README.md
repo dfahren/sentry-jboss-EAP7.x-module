@@ -5,7 +5,7 @@ You could also install this in any other JBoss AS or Wildfly server as long as t
 ## Instructions
 0. Clone this repository.
 1. Add the whole path `modules/system/layers/base/io/sentry/main/` and all files contained within to your JBoss home directory.
-2. Add the custom handler, formatter, and root logger tags shown below to your *standalone.xml* or *domain.xml* file(s). The serve demonstration purposes. Use as you like.
+2. Add the custom handler, formatter, and root logger tags shown below either to your *standalone.xml* or *domain.xml* file. The tags and their contents serve demonstration purposes, use as you like.
 ```xml
 <custom-handler name="SENTRY" class="io.sentry.jul.SentryHandler" module="io.sentry">  
 	<level name="WARN"/>  
