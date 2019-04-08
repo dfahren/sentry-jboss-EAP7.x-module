@@ -3,8 +3,9 @@ This is a custom module to be installed in JBoss EAP 7.x so that your applicatio
 You could also install this in any other JBoss AS or Wildfly server as long as the latter adheres to the namespace "urn:jboss:module:1.5".
 
 ## Instructions
-1. Add the whole path `modules/system/layers/base/io/sentry/main/` from this repository to your JBoss home directory.
-2. Add the custom handler tags below to your `standalone.xml` or `domain.xml` file(s)
+0. Clone this repository.
+1. Add the whole path `modules/system/layers/base/io/sentry/main/` and all files contained within to your JBoss home directory.
+2. Add the custom handler, formatter, and root logger tags shown below to your *standalone.xml* or *domain.xml* file(s). The serve demonstration purposes. Use as you like.
 ```xml
 <custom-handler name="SENTRY" class="io.sentry.jul.SentryHandler" module="io.sentry">  
 	<level name="WARN"/>  
@@ -12,11 +13,15 @@ You could also install this in any other JBoss AS or Wildfly server as long as t
 		<named-formatter name="DEFAULTPATTERN"/>
 	</formatter>
 </custom-handler>
+
 ...
+
 <formatter name="DEFAULTPATTERN">
 	<pattern-formatter pattern="%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/>
 </formatter>
+
 ...
+
 <root-logger>
 	<level name="INFO"/>
 	<handlers>
@@ -25,11 +30,17 @@ You could also install this in any other JBoss AS or Wildfly server as long as t
 	</handlers>
 </root-logger>
 ```
-3. Either set your DSN in a `SENTRY_DSN` environment variable or as a VM argument like so `-Dsentry.dsn=http://...`
+3. Either set your DSN in the `SENTRY_DSN` environment variable or as a VM argument like so `-Dsentry.dsn=http://...`
 5. Done!
 
 ## Updating sentry library
-If you wish to use any other version than 1.7.22 of the `sentry.jar`, then you can easily replace this line
-`<resource-root path="sentry-1.7.22.jar" />` with `<resource-root path="sentry-<your version number>.jar" />` in `module.xml`.
-Make sure you also save the new `sentry-<your version number>.jar` in the same location as the `module.xml` file!
+If you wish to use any other version than 1.7.22 of the *sentry.jar*, then you can easily replace this line
+```
+<resource-root path="sentry-1.7.22.jar" />
+```
+with
+```<resource-root path="sentry-<your version number>.jar" />
+```
+in *module.xml*.
+Make sure you also save the new *sentry-<your version number>.jar* in the same location as the *module.xml* file!
 
